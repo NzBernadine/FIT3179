@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+</head>
+<body>
+  <div id="vis">
+  <p>The state with most sales over superstore is California, followed by New York and Texas </p>
+  </div>
+
+  <div id="vis2">
+  </div>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "title": "Sales per States",
+  "projection": {"type": "albersUsa"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/states_usa.json",
+        "format": {"type": "topojson", "feature": "states"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/sales.csv"
+            },
+            "key": "State",
+            "fields": ["TotalSales"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "color": {
+          "field": "TotalSales",
+          "type": "quantitative",
+          "scale": {"type": "log"}
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "Country"},
+          {"field": "TotalSales", "type": "quantitative"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+};
+
+const spec2 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "title": "Sales by sub-category over the years",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "params": [
+    {
+      "name": "Category_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Office Supplies", "Furniture", "Technology"],
+        "labels": ["Show All", "Office Supplies", "Furniture", "Technology"],
+        "name": "Category Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"calculate": "datetime(datum.Order_Date)", "as": "Year"},
+    {"filter": "Category_selection== null|| datum.Category==Category_selection"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "line", "tooltip": true, "point": true, "text": "true"},
+      "encoding": {
+        "x": {
+          "timeUnit": "year",
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year",
+          "scale": {"padding": 0.5}
+        },
+        "y": {"field": "Sales", "type": "quantitative", "aggregate": "sum"},
+        "order": {"timeUnit": "year", "field": "Year", "type": "ordinal"},
+        "color": {"field": "Sub_Category"}
+      }
+    }
+  ],
+  "config": {}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    vegaEmbed("#vis2", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
