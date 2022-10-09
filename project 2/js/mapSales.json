@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "title": "Sales per States",
+  "projection": {"type": "albersUsa"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/states_usa.json",
+        "format": {"type": "topojson", "feature": "states"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/sales.csv"
+            },
+            "key": "State",
+            "fields": ["TotalSales"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+        "color": {
+          "field": "TotalSales",
+          "type": "quantitative",
+          "scale": {"type": "log"}
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "Country"},
+          {"field": "TotalSales", "type": "quantitative"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
