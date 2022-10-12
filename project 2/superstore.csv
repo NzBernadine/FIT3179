@@ -1,4 +1,4 @@
-"","X","State","Row.ID","Order.ID","Order_Date","Ship.Date","Ship_Mode","Customer.ID","Customer_Name","Segment","City","Region","Product.ID","Category","Sub_Category","Sales","Quantity","Discount","Profit","Latitude","Longitude","code"
+"","X","State","Row.ID","Order.ID","Order_Date","Ship.Date","Ship_Mode","Customer.ID","Customer_Name","Segment","City","Region","Product_ID","Category","Sub_Category","Sales","Quantity","Discount","Profit","Latitude","Longitude","code"
 "1",1,"Alabama",4937,"CA-2017-150931",2017-01-06,"1/13/2017","Standard Class","DP-13390","Dennis Pardue","Home Office","Tuscaloosa","South","OFF-BI-10004728","Office Supplies","Binders",33.74,7,0,15.5204,32.6010112,-86.6807365,1
 "2",2,"Alabama",2016,"CA-2016-145905",2016-09-18,"9/23/2016","Standard Class","AM-10705","Anne McFarland","Consumer","Auburn","South","OFF-ST-10003716","Office Supplies","Storage",900.08,4,0,117.0104,32.6010112,-86.6807365,1
 "3",3,"Alabama",3706,"CA-2015-104941",2015-06-13,"6/19/2015","Standard Class","DH-13075","Dave Hallsten","Corporate","Decatur","South","OFF-PA-10003363","Office Supplies","Paper",32.4,5,0,15.552,32.6010112,-86.6807365,1
