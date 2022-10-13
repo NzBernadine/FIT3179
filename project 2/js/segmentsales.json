@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "vconcat": [
+    {
+      "width": 800,
+      "height": 500,
+      "title": "Total Product Sold by  over the years",
+      "mark": {"type": "point", "tooltip": true},
+      "transform": [{"filter": {"param": "click"}}],
+      "encoding": {
+        "color": {"field": "Segment", "type": "nominal"},
+        "x": {
+          "field": "Order_Date",
+          "timeUnit": "yearmonth",
+          "type": "ordinal",
+          "title": "Date"
+        },
+        "y": {
+          "title": "Total Product sold",
+          "field": "Product_ID",
+          "aggregate": "count",
+          "axis": {"grid": false},
+          "type": "quantitative"
+        },
+        "size": {
+          "title": "Total Sales",
+          "field": "Sales",
+          "aggregate": "sum",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "width": 600,
+      "height": 100,
+      "title": "Sales by sub-category over the years",
+      "encoding": {"y": {"field": "Segment", "axis": null}},
+      "layer": [
+        {
+          "mark": {"type": "bar", "tooltip": true},
+          "params": [
+            {
+              "name": "click",
+              "select": {"type": "point", "encodings": ["color"]}
+            }
+          ],
+          "transform": [
+            {
+              "aggregate": [
+                {"field": "Sales", "as": "TotalSales", "op": "sum"}
+              ],
+              "groupby": ["Segment"]
+            }
+          ],
+          "encoding": {
+            "x": {
+              "aggregate": "sum",
+              "field": "TotalSales",
+              "title": "Total Sales",
+              "axis": {"format": "~s", "grid": false}
+            },
+            "color": {
+              "condition": {"param": "click", "field": "Segment"},
+              "value": "lightgray"
+            }
+          }
+        },
+        {
+          "mark": {"type": "text", "align": "right", "x": 70, "color": "#ddd"},
+          "encoding": {
+            "text": {"field": "Segment"},
+            "detail": {"aggregate": "count"}
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Sales by region over the years",
+  "width": 500,
+  "height": 80,
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "transform": [{"calculate": "datetime(datum.Order_Date)", "as": "Year"}],
+  "mark": {"type": "area", "tooltip": true},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "timeUnit": "yearmonth",
+      "title": "Time",
+      "axis": {"grid": false}
+    },
+    "y": {
+      "field": "Sales",
+      "type": "quantitative",
+      "aggregate": "sum",
+      "title": "Sales",
+      "axis": {"grid": false}
+    },
+    "color": {"field": "Region", "type": "nominal", "legend": null},
+    "row": {"field": "Region", "type": "nominal", "title": "Region"}
+  },
+  "config": {}
+}
