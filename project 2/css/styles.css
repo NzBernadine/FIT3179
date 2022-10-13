@@ -1,8 +1,68 @@
-#choropleth_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
+
+body *{
+    font-family: Tahoma;
+}
+
+body {
+	background-color: white;
+}
+
+h1 {
+	color: midnightblue;
+	text-align: center;
+	font-size: 50px;
+	font-weight: 900px;
+  }
+  p{
+	
+  }
+
+  .page {
+    width: 1000px;
+	background-color: lightgrey;
+    margin: auto;
+    padding: 80px;
+    padding-top: 35px;
+}
+  .vis-container {
+    width: 100%;
+}
+
+.description h2,
+h1 {
+	color: midnightblue;
+    margin-top: 0px;
+}
+
+.description-right {
+    padding-left: 20px;
+}
+
+.description-left {
+    padding-right: 20px;
+}
+
+/*#area_chart{
 	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
+	left: 100px;
+	padding-bottom: 10%;
+	padding-top: 5%;
+}
+
+#choropleth_map {
+	right: 100px;
+	left: 100px;
+	padding-bottom: 10%;
+	padding-top: 5%;
+}
+
+#slope_chart{
+	padding: 5%;
+}
+
+#barScatter_chart{
+	padding: 5%;	
+}*/
+.pure-g {
+    margin-bottom: 40px;
 }
