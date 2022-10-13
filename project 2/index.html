@@ -8,76 +8,313 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 </head>
 <body>
-  <div id="choropleth_map"/>
-  <script>
-    const spec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 500,
-  "title": "Sales per States",
-  "projection": {"type": "albersUsa"},
-  "layer": [
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/ne_10m_admin_1_states_provinces.json",
-        "format": {
-          "type": "topojson",
-          "feature": "ne_10m_admin_1_states_provinces"
-        }
-      },
-      "transform": [
+  <div class="page">
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Superstore Sales Perfomance</h1>
+        <p>This visualization is about the sales perfomance of Susperstore in the us.</p>
+      </div>
+    </div>
+    <!--sales per region -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2>Total Sales per States</h2>
+          <p>The first column contains text and the second column contains a visualisation.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="choropleth_map" class="vis-container"></div>
+      </div>
+    </div>
+    <!--sales per states -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2>Sales by region over the years</h2>
+            <p>The first column contains text and the second column contains a visualisation.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="area_chart" class="vis-container"></div>
+      </div>
+    </div>
+
+  <!--sales per region -->
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <div class="description description-left">
+        <h2>Sales by sub-category over the years</h2>
+        <p>The first column contains text and the second column contains a visualisation.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+      </div>
+    </div>
+    <div class="pure-u-1-2">
+      <div id="slope_chart" class="vis-container"></div>
+    </div>
+  </div>
+ 
+  <!--sales per segment -->
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <div class="description description-left">
+        <h2>Total Product Sold by  over the years</h2>
+        <p>The first column contains text and the second column contains a visualisation.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+      </div>
+    </div>
+    <div class="pure-u-1-2">
+      <div id="barScatter_chart" class="vis-container"></div>
+    </div>
+  </div>
+<!--page -->
+</div>
+
+  <script type="text/javascript">
+
+    const vis1 = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 800,
+      "height": 500,
+      "background":"lightgrey",
+      "projection": {"type": "albersUsa"},
+      "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/states_usa.json",
+          "format": {
+            "type": "topojson", 
+            "feature": "states"
+          }
+        },
+       "transform": [
         {
           "lookup": "properties.name",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+              "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/sales.csv"
             },
             "key": "State",
-            "fields": ["Sales", "Profit"]
+            "fields": ["TotalSales"]
           }
         }
       ],
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
         "color": {
-          "field": "Sales",
+          "field": "TotalSales",
           "type": "quantitative",
           "scale": {"type": "log"}
         },
         "tooltip": [
-          {"field": "properties.name", "type": "nominal", "title": "Country"},
-          {"field": "Sales", "type": "quantitative"}
-        ]
-      }
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
-      },
-      "mark": {"type": "circle"},
-      "encoding": {
-        "longitude": {"field": "Longitude", "type": "quantitative"},
-        "latitude": {"field": "Latitude", "type": "quantitative"},
-        "size": {
-          "field": "Sales",
-          "type": "quantitative",
-          "scale": {"type": "log"}
+        {
+          "field": "properties.name", 
+          "type": "nominal", 
+          "title": "Country"
         },
-        "color": {
-          "field": "Sales",
+        {
+          "field": "TotalSales", 
           "type": "quantitative",
-          "scale": {"type": "log"}
-        },
-        "tooltip": [
-          {"field": "State", "type": "nominal", "title": "Country"},
-          {"field": "Sales", "type": "quantitative"}
-        ]
+          "scale": {
+            "format": "~s"
+          }
+        }]
       }
     }
   ],
   "config": {}
 };
-    vegaEmbed("#choropleth_map", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    const vis2 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background":"lightgrey",
+  "width": 500,
+  "height": 80,
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "transform": [{"calculate": "datetime(datum.Order_Date)", "as": "Year"}],
+  "mark": {"type": "area", "tooltip": true},
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "timeUnit": "yearmonth",
+      "title": "Time",
+      "axis": {"grid": false}
+    },
+    "y": {
+      "field": "Sales",
+      "type": "quantitative",
+      "aggregate": "sum",
+      "title": "Sales",
+      "axis": {"grid": false}
+    },
+    "color": {"field": "Region", "type": "nominal", "legend": null},
+    "row": {"field": "Region", "type": "nominal", "title": "Region"}
+  },
+  "config": {}
+};
+    const vis3 = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 800,
+      "height": 500,
+      "background":"lightgrey",
+      "data": {
+        "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+      },
+      "params": [
+      {
+        "name": "Category_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null, 
+            "Office Supplies", 
+            "Furniture", 
+            "Technology"
+          ],
+          "labels": [
+            "Show All", 
+            "Office Supplies", 
+            "Furniture", 
+            "Technology"
+          ],
+          "name": "Category Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"calculate": "datetime(datum.Order_Date)", "as": "Year"},
+    {"filter": "Category_selection== null|| datum.Category==Category_selection"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "line", "tooltip": true, "point": true, "text": "true"},
+      "encoding": {
+        "x": {
+          "timeUnit": "year",
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year",
+          "scale": {"padding": 0.5 }
+        },
+        "y": {
+          "field": "Sales", 
+          "type": "quantitative", 
+          "aggregate": "sum", 
+          "axis": {"grid": false}
+        },
+        "order": {"timeUnit": "year", "field": "Year", "type": "ordinal"},
+        "color": {"field": "Sub_Category"},
+        
+      }
+    }
+  ],
+  "config": {}
+};
+    const vis4 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "background":"lightgrey",
+  "vconcat": [
+    {
+      "width": 800,
+      "height": 500,
+      "mark": {"type": "point", "tooltip": true},
+      "transform": [{"filter": {"param": "click"}}],
+      "encoding": {
+        "color": {"field": "Segment", "type": "nominal"},
+        "x": {
+          "field": "Order_Date",
+          "timeUnit": "yearmonth",
+          "type": "ordinal",
+          "title": "Date"
+        },
+        "y": {
+          "title": "Total Product sold",
+          "field": "Product_ID",
+          "aggregate": "count",
+          "axis": {"grid": false},
+          "type": "quantitative"
+        },
+        "size": {
+          "title": "Total Sales",
+          "field": "Sales",
+          "aggregate": "sum",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "width": 500,
+      "height": 100,
+      "title": {
+        "text": "Sales by sub-category over the years",
+        "anchor": "middle",
+        "fontSize": 20,
+        "font": "Tahoma",
+        "offset": 20
+      },
+
+      "encoding": {"y": {"field": "Segment", "axis": null}},
+      "layer": [
+        {
+          "mark": {"type": "bar", "tooltip": true},
+          "params": [
+            {
+              "name": "click",
+              "select": {"type": "point", "encodings": ["color"]}
+            }
+          ],
+          "transform": [
+            {
+              "aggregate": [
+                {"field": "Sales", "as": "TotalSales", "op": "sum"}
+              ],
+              "groupby": ["Segment"]
+            }
+          ],
+          "encoding": {
+            "x": {
+              "aggregate": "sum",
+              "field": "TotalSales",
+              "title": "Total Sales",
+              "axis": {"format": "~s", "grid": false}
+            },
+            "color": {
+              "condition": {"param": "click", "field": "Segment"},
+              "value": "burlywood"
+            }
+          }
+        },
+        {
+          "mark": {"type": "text", "align": "right", "x": 70, "color": "black"},
+          "encoding": {
+            "text": {"field": "Segment"},
+            "detail": {"aggregate": "count"}
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}; 
+  vegaEmbed("#choropleth_map", vis1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  vegaEmbed("#area_chart", vis2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  vegaEmbed("#slope_chart", vis3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  vegaEmbed("#barScatter_chart", vis4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
 </body>
 </html>
