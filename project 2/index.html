@@ -12,66 +12,95 @@
   <div class="page">
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h1>Superstore Sales Perfomance</h1>
-        <p>This visualization is about the sales perfomance of Susperstore in the us.</p>
-      </div>
-    </div>
-    <!--sales per region -->
-    <div class="pure-g">
-      <div class="pure-u-1-2">
-        <div class="description description-left">
-          <h2>Total Sales per States</h2>
-          <p>The first column contains text and the second column contains a visualisation.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
-        </div>
-      </div>
-      <div class="pure-u-1-2">
-        <div id="choropleth_map" class="vis-container"></div>
+        <h1>Superstore <b class="span-nblue">Sales</b> Perfomance</h1>
+        <p style="width: 800px;">This visualization is about the sales perfomance of Susperstore in the 
+          <i class="span-nblue"> US </i> from <i class="span-nblue"> 2014-2017</i>. 
+          The data have been retrive from <a href="https://www.kaggle.com/datasets/vivek468/superstore-dataset-final" 
+          target="_blank">Kaggle</a>, the dataset contain <i class="span-nblue">Sales & Profit</i> 
+          of Superstore. It has been collected and posted 8 month ago by <a href="https://www.kaggle.com/vivek468" 
+          target="_blank"> Vivek Chowdhury </a> who is a Data Analyst in India. </p>
       </div>
     </div>
     <!--sales per states -->
     <div class="pure-g">
       <div class="pure-u-1-2">
         <div class="description description-left">
-          <h2>Sales by region over the years</h2>
-            <p>The first column contains text and the second column contains a visualisation.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+          <h2>Total Sales per <b class="span-nblue">States</b> from <b class="span-nblue">2014-2017</b> </h2>
+          <p>Over the time space the top 3 sales states are <b style="color: yellow;"> California </b> : 
+            <span class="span-nblue"> $146.38K</span>, <b style="color: lightblue;"> New York </b> : 
+            <span class="span-nblue"> $92.92K </span> and <b style="color: black;"> Washington </b> :<span class="span-nblue"> $65.53K</span>.
+             Moreover <b style="color: yellow;"> California</b> have been the State to count the highest record of unique 
+             <span class="span-nblue">Product</span> sold over the 3 years with the highest being <span class="span-nblue"> 663 </span> 
+             in <span class="span-nblue">2017</span>.</p>
+        </div>
+      </div>
+      <div class="pure-u-1-2" >
+        <div id="choropleth_map" class="vis-container"></div>
+      </div>
+    </div>
+    <!--sales per region -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2>Total Sales by <b class="span-nblue"> Region</b> over the <span class="span-nblue">Year per Month</span> </h2>
+            <p>Among the four Regions, the <b style="color: #D891AF;"> East </b> side has had the highest sales of 
+              <span class="span-nblue">$46.63K </span> in <span class="span-nblue"> November 2017</span>. The
+              <b style="color: beige;"> Center </b> </b> side has had the highest sales of 
+              <span class="span-nblue">$34.41K </span> in <span class="span-nblue"> September 2014</span>. The
+              <b style="color: #692657;"> South </b> side has had the highest sales of 
+              <span class="span-nblue">$32.91K </span> in <span class="span-nblue"> March 2014</span>. The
+              <b style="color: #A6D3F7;"> West </b> side has had the highest sales of 
+              <span class="span-nblue">$33.12K </span> in <span class="span-nblue"> December 2016</span>.
+              However the Region with top Sales over the course of the four Year turn out to be the 
+              <b style="color: #A6D3F7;"> West </b>  side with over <span class="span-nblue"> $725K </span> of Sales 
+              follow by the <b style="color: #D891AF;">East </b>  side with over <span class="span-nblue"> $678K </span> of Sales.</p>
         </div>
       </div>
       <div class="pure-u-1-2">
         <div id="area_chart" class="vis-container"></div>
       </div>
     </div>
+     <!--sales per region bar chart -->
+     <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2>Total Sales by <b class="span-nblue"> Region</b> over the <span class="span-nblue">Years</span> </h2>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="bar_chart" class="vis-container"></div>
+      </div>
+    </div>
 
-  <!--sales per region -->
+  <!--sales per sub-Category-->
   <div class="pure-g">
     <div class="pure-u-1-2">
       <div class="description description-left">
-        <h2>Sales by sub-category over the years</h2>
-        <p>The first column contains text and the second column contains a visualisation.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+        <h2>Sales by <b class="span-nblue"> Sub-Category </b> over the <b class="span-nblue"> Years </b></h2>
+        <p> Among all the Sub-Categories <b style="color: brown ;"> Phones</b> and <b style="color: DarkSeaGreen;"> Chairs</b> demonstrate to be the ones who have made 
+          most of the sales for all period of time. They both went from a total of <span class="span-nblue"> $77.39K </span> 
+          in <span class="span-nblue"> 2014 </span> to <span class="span-nblue"> $105.34K </span> for <b style="color: brown ;"> Phone</b> and 
+          <span class="span-nblue"> $95.55K </span> for <b style="color: DarkSeaGreen;"> Chairs </b> in <span class="span-nblue"> 2017</span>. </p>
       </div>
     </div>
     <div class="pure-u-1-2">
       <div id="slope_chart" class="vis-container"></div>
     </div>
   </div>
+  
  
   <!--sales per segment -->
   <div class="pure-g">
     <div class="pure-u-1-2">
       <div class="description description-left">
-        <h2>Total Product Sold by  over the years</h2>
-        <p>The first column contains text and the second column contains a visualisation.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+        <h2>Total <b class="span-nblue"> Products </b>  Sold by <b class="span-nblue"> Segment </b> 
+          over the <b class="span-nblue"> Years Per Month</b> </h2>
+        <p>Among the different type of customer Segment the <b style="color: DodgerBlue;"> Consumer </b>  has turn to make a Total Sales of over <span class="span-nblue"> $1M </span> .
+          Over the period of time each segment has sold more than <span class="span-nblue"> 1K unique product </span> . Furthermore, the period of 
+          the year which tent to make most of the sales for all customer Segment seems to be from <span class="span-nblue"> September - December </span>.
+          With a Threshold of <span style="color: red"> $30K </span> of Total Sales, which correspond the middle value of the domain, we can observe that
+          <b style="color: orange;"> Home Office  </b> Segment has passed it once in <span class="span-nblue"> March 2014 </span> with a Total Sales of <span class="span-nblue"> $32.7K </span> and <span class="span-nblue"> 30 unique Products</span>.  
+           </p>
       </div>
     </div>
     <div class="pure-u-1-2">
@@ -85,112 +114,382 @@
 
     const vis1 = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "width": 800,
-      "height": 500,
-      "background":"lightgrey",
+  "background": "grey",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "vconcat": [
+    {
+      "width": 600,
+      "height": 400,
       "projection": {"type": "albersUsa"},
       "layer": [
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/states_usa.json",
-          "format": {
-            "type": "topojson", 
-            "feature": "states"
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/states_usa.json",
+            "format": {"type": "topojson", "feature": "states"}
+          },
+          "transform": [
+            {
+              "lookup": "properties.name",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/sales.csv"
+                },
+                "key": "State",
+                "fields": ["TotalSales", "Year"]
+              }
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "white"},
+          "encoding": {
+            "color": {
+              "field": "TotalSales",
+              "type": "quantitative",
+              "title": "Total Sales",
+              "scale": {"type": "log"}
+            },
+            "tooltip": [
+              {"field": "properties.name", "type": "nominal", "title": "State"},
+              {
+                "field": "TotalSales",
+                "type": "quantitative",
+                "format": "~s",
+                "title": "Total Sales"
+              }
+            ]
           }
         },
-       "transform": [
         {
-          "lookup": "properties.name",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/sales.csv"
+          "transform": [
+            {"filter": {"param": "time_brush"}},
+            {"timeUnit": "year", "as": "Year", "field": "Order_Date"}
+          ],
+          "encoding": {
+            "longitude": {"field": "Longitude", "type": "quantitative"},
+            "latitude": {"field": "Latitude", "type": "quantitative"}
+          },
+          "layer": [
+            {
+              "mark": {"type": "circle", "color": "whitesmoke", "opacity": 0.4},
+              "encoding": {
+                "size": {
+                  "field": "Quantity",
+                  "aggregate": "count",
+                  "scale": {"domain": [0, 50, 150, 350, 600]},
+                  "title": "No. Products"
+                },
+                "tooltip": [
+                  {"field": "State"},
+                  {
+                    "field": "Year",
+                    "timeUnit": "year",
+                    "title": "Year",
+                    "type": "ordinal"
+                  },
+                  {
+                    "field": "Product_ID",
+                    "aggregate": "count",
+                    "title": "Total Product Sold"
+                  }
+                ]
+              }
             },
-            "key": "State",
-            "fields": ["TotalSales"]
-          }
+            {
+              "transform": [
+                {
+                  "aggregate": [
+                    {
+                      "field": "Product_ID",
+                      "op": "count",
+                      "as": "NumberProduct"
+                    }
+                  ],
+                  "groupby": ["Year", "Latitude", "Longitude"]
+                },
+                {
+                  "window": [{"op": "rank", "as": "ranking"}],
+                  "sort": [{"field": "NumberProduct", "order": "descending"}]
+                },
+                {"filter": "datum.ranking == 1"},
+                {
+                  "calculate": "'The highest Record of; the selected period: ' + datum['NumberProduct']",
+                  "as": "text_annotation_raw"
+                },
+                {
+                  "calculate": "split(datum.text_annotation_raw,';')",
+                  "as": "text_annotation"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "right",
+                "dx": -8,
+                "dy": -8,
+                "font": "Tahoma",
+                "baseline": "middle",
+                "fontStyle": "italic",
+                "fontSize": 20,
+                "color": "white"
+              },
+              "encoding": {"text": {"field": "text_annotation"}}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 500,
+      "height": 100,
+      "mark": {"type": "line", "point": true, "color": "midnightblue"},
+      "title": "Filter",
+      "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
-        "color": {
-          "field": "TotalSales",
-          "type": "quantitative",
-          "scale": {"type": "log"}
+        "x": {
+          "field": "Order_Date",
+          "timeUnit": "year",
+          "type": "ordinal",
+          "axis": {"title": null, "labelColor": "aliceblue"}
         },
-        "tooltip": [
-        {
-          "field": "properties.name", 
-          "type": "nominal", 
-          "title": "Country"
-        },
-        {
-          "field": "TotalSales", 
+        "y": {
+          "field": "Product_ID",
+          "aggregate": "count",
           "type": "quantitative",
-          "scale": {
-            "format": "~s"
-          }
-        }]
+          "title": "No. Products"
+        }
       }
     }
   ],
-  "config": {}
+  "config": {
+    "axisY": {
+      "labelColor": "aliceblue",
+      "grid": false,
+      "titleColor": "aliceblue",
+      "labelFont": "Tahoma",
+      "format": "~s"
+    },
+    "title": {"color": "aliceblue"},
+    "legend": {
+      "labelColor": "aliceblue",
+      "titleColor": "aliceblue",
+      "titleFont": "Tahoma"
+    }
+  }
 };
     const vis2 = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "background":"lightgrey",
-  "width": 500,
-  "height": 80,
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "grey",
   "data": {
     "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
   },
   "transform": [{"calculate": "datetime(datum.Order_Date)", "as": "Year"}],
-  "mark": {"type": "area", "tooltip": true},
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "ordinal",
-      "timeUnit": "yearmonth",
-      "title": "Time",
-      "axis": {"grid": false}
-    },
-    "y": {
-      "field": "Sales",
-      "type": "quantitative",
-      "aggregate": "sum",
-      "title": "Sales",
-      "axis": {"grid": false}
-    },
-    "color": {"field": "Region", "type": "nominal", "legend": null},
-    "row": {"field": "Region", "type": "nominal", "title": "Region"}
+  "facet": {
+    "row": {
+      "field": "Region",
+      "type": "nominal",
+      "title": "Region",
+      "header": {"title": null, "labelColor": "aliceblue"}
+    }
   },
-  "config": {}
+  "spec": {
+    "width": 800,
+    "height": 100,
+    "layer": [
+      {
+        "mark": {"type": "area", "tooltip": true},
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "timeUnit": "yearmonth",
+            "title": "Time"
+          },
+          "y": {
+            "field": "Sales",
+            "type": "quantitative",
+            "aggregate": "sum",
+            "title": "Sales",
+            "axis": {"format": "~s", "title": null}
+          },
+          "color": {
+            "field": "Region",
+            "type": "nominal",
+            "legend": null,
+            "scale": {"range": ["beige", "#D891AF", "#692657", "#A6D3F7"]}
+          }
+        }
+      },
+      {
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "timeUnit": "yearmonth",
+            "title": "Time"
+          },
+          "y": {
+            "field": "TotalSales",
+            "aggregate": "sum",
+            "type": "quantitative"
+          }
+        },
+        "transform": [
+          {
+            "aggregate": [{"as": "TotalSales", "field": "Sales", "op": "sum"}],
+            "groupby": ["Year", "Region"]
+          },
+          {
+            "sort": [{"field": "TotalSales", "order": "descending"}],
+            "window": [{"as": "Ranking", "op": "rank"}],
+            "groupby": ["Year", "Region"]
+          },
+          {"filter": "datum.Ranking==1"}
+        ],
+        "layer": [
+          {
+            "mark": {"type": "circle"},
+            "encoding": {"color": {"field": "Region"}}
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "center",
+              "dx": -5,
+              "dy": -4,
+              "font": "Tahoma",
+              "baseline": "middle",
+              "fontStyle": "italic",
+              "fontSize": 10,
+              "color": "aliceblue"
+            },
+            "encoding": {
+              "text": {
+                "field": "",
+                "aggregate": "sum",
+                "format": "~s"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelColor": "aliceblue",
+      "grid": false,
+      "titleColor": "aliceblue",
+      "labelFont": "Tahoma"
+    },
+    "title": {"color": "aliceblue"},
+    "legend": {
+      "labelColor": "aliceblue",
+      "titleColor": "aliceblue",
+      "titleFont": "Tahoma"
+    }
+  }
 };
     const vis3 = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "width": 800,
-      "height": 500,
-      "background":"lightgrey",
-      "data": {
-        "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
-      },
-      "params": [
-      {
-        "name": "Category_selection",
-        "bind": {
-          "input": "select",
-          "options": [
-            null, 
-            "Office Supplies", 
-            "Furniture", 
-            "Technology"
-          ],
-          "labels": [
-            "Show All", 
-            "Office Supplies", 
-            "Furniture", 
-            "Technology"
-          ],
-          "name": "Category Selection: "
+  "background": "grey",
+  "width": 500,
+  "height":200,
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "transform": [{
+    "calculate": "datetime(datum.Order_Date)", 
+    "as": "Year"}
+    ],
+    "encoding": {
+        "x": {
+        "field": "Sales",
+        "aggregate": "sum",
+        "title": "Total Sales",
+        "type": "quantitative",
+        "axis": {
+          "format": "~s",
+          "labels": false
+        }
+     },
+      "y":{
+        "field":"Region",
+        "type": "nominal"
+      }, 
+    },
+  "layer":[
+  {
+    "mark":{
+      "type": "bar"
+    },
+    "encoding":{
+      "color": {
+        "field": "Region",
+        "type": "nominal",
+        "legend": null,
+        "scale": {
+          "range": ["beige", "#D891AF", "#692657", "#A6D3F7"]} 
+      }
+    },
+  },
+  {
+    "mark":{
+      "type": "text",
+      "align": "right",
+      "dx": -4,
+      "dy": -4,
+      "font": "Tahoma", 
+      "fontStyle": "bold",
+      "fontSize": 12,
+      "color": "gray"
+      
+    }, 
+    "encoding": {
+      "text": {
+        "field": "Sales",
+        "aggregate": "sum",
+        "format": "~s"
+      }
+    }
+  }
+  ],
+ 
+  "config": {
+    "axis": {
+      "labelColor": "aliceblue",
+      "grid": false,
+      "titleColor": "aliceblue",
+      "labelFont": "Tahoma"
+    },
+    "title": {"color": "aliceblue"},
+    "legend": {
+      "labelColor": "aliceblue",
+      "titleColor": "aliceblue",
+      "titleFont": "Tahoma"
+    }
+  }
+    }
+    const vis4 = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 500,
+  "background": "grey",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "params": [
+    {
+      "name": "Category_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Office Supplies", "Furniture", "Technology"],
+        "labels": ["Show All", "Office Supplies", "Furniture", "Technology"],
+        "name": "Category Selection: "
       }
     }
   ],
@@ -207,68 +506,136 @@
           "field": "Year",
           "type": "ordinal",
           "title": "Year",
-          "scale": {"padding": 0.5 }
+          "scale": {"padding": 0.5}
         },
         "y": {
-          "field": "Sales", 
-          "type": "quantitative", 
-          "aggregate": "sum", 
-          "axis": {"grid": false}
+          "field": "Sales",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "title": "Total Sales",
+          "axis": {"format": "~s"}
         },
-        "order": {"timeUnit": "year", "field": "Year", "type": "ordinal"},
-        "color": {"field": "Sub_Category"},
-        
+        "color": {
+          "field": "Sub_Category",
+          "scale": {"scheme": "category20b"},
+          "title": "Sub-Category"
+        }
       }
     }
   ],
-  "config": {}
+  "config": {
+    "axis": {
+      "labelColor": "aliceblue",
+      "grid": false,
+      "titleColor": "aliceblue",
+      "labelFont": "Tahoma"
+    },
+    "title": {"color": "aliceblue"},
+    "legend": {
+      "labelColor": "aliceblue",
+      "titleColor": "aliceblue",
+      "titleFont": "Tahoma"
+    }
+  }
 };
-    const vis4 = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    const vis5 = {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
     "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
   },
-  "background":"lightgrey",
+  "background": "grey",
   "vconcat": [
     {
-      "width": 800,
-      "height": 500,
-      "mark": {"type": "point", "tooltip": true},
+      "width": 700,
+      "height": 600,
       "transform": [{"filter": {"param": "click"}}],
-      "encoding": {
-        "color": {"field": "Segment", "type": "nominal"},
-        "x": {
-          "field": "Order_Date",
-          "timeUnit": "yearmonth",
-          "type": "ordinal",
-          "title": "Date"
+      "layer": [
+        {
+          "mark": {"type": "point"},
+          "encoding": {
+            "x": {
+              "field": "Order_Date",
+              "timeUnit": "yearmonth",
+              "type": "ordinal",
+              "title": "Time"
+            },
+            "y": {
+              "title": "Total Sales",
+              "field": "Sales",
+              "aggregate": "sum",
+              "axis": {"grid": false},
+              "type": "quantitative"
+            },
+            "color": {
+              "field": "Segment",
+              "type": "nominal",
+              "scale": {"scheme": "category20"}
+            },
+            "size": {
+              "title": "No Products",
+              "field": "Product_ID",
+              "aggregate": "count",
+              "type": "quantitative",
+              "scale": {"domain": [0, 50, 200, 350]}
+            },
+            "tooltip": [
+            {
+                "field": "Order_Date",
+                "timeUnit": "yearmonth",
+                "type": "ordinal",
+                "title": "Time"
+              },
+            {
+              "field": "Segment", 
+              "type": "nominal"
+            },
+            {
+                "field": "Sales",
+                "aggregate": "sum",
+                "title": "Total Sales",
+                "format": "~s"
+              },
+              {
+                "title": "No Products",
+                "field": "Product_ID",
+                "aggregate": "count"
+              },
+              
+            ]
+          }
         },
-        "y": {
-          "title": "Total Product sold",
-          "field": "Product_ID",
-          "aggregate": "count",
-          "axis": {"grid": false},
-          "type": "quantitative"
-        },
-        "size": {
-          "title": "Total Sales",
-          "field": "Sales",
-          "aggregate": "sum",
-          "type": "quantitative"
+        {
+          "encoding": {"y": {"datum": 30000}},
+          "layer": [
+            {
+              "mark": {"type": "rule"},
+              "encoding": {"color": {"value": "red"}, "size": {"value": 3}}
+            },
+            {
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 8,
+                "x": "width",
+                "text": "Threshold",
+                "color": "aliceblue",
+                "font": "Tahoma"
+              }
+            }
+          ]
         }
-      }
+      ]
     },
     {
-      "width": 500,
+      "width": 700,
       "height": 100,
       "title": {
-        "text": "Sales by sub-category over the years",
+        "text": "Sales by Segment over the years",
         "anchor": "middle",
         "fontSize": 20,
         "font": "Tahoma",
         "offset": 20
       },
-
       "encoding": {"y": {"field": "Segment", "axis": null}},
       "layer": [
         {
@@ -310,12 +677,26 @@
       ]
     }
   ],
-  "config": {}
+  "config": {
+    "axis": {
+      "labelColor": "aliceblue",
+      "grid": false,
+      "titleColor": "aliceblue",
+      "labelFont": "Tahoma"
+    },
+    "title": {"color": "aliceblue"},
+    "legend": {
+      "labelColor": "aliceblue",
+      "titleColor": "aliceblue",
+      "titleFont": "Tahoma"
+    }
+  }
 }; 
   vegaEmbed("#choropleth_map", vis1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   vegaEmbed("#area_chart", vis2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-  vegaEmbed("#slope_chart", vis3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-  vegaEmbed("#barScatter_chart", vis4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  vegaEmbed("#bar_chart", vis3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  vegaEmbed("#slope_chart", vis4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  vegaEmbed("#barScatter_chart", vis5, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
 </body>
 </html>
