@@ -1,0 +1,113 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "grey",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "transform": [{"calculate": "datetime(datum.Order_Date)", "as": "Year"}],
+  "facet": {
+    "row": {
+      "field": "Region",
+      "type": "nominal",
+      "title": "Region",
+      "header": {"title": null, "labelColor": "aliceblue"}
+    }
+  },
+  "spec": {
+    "width": 800,
+    "height": 100,
+    "layer": [
+      {
+        "mark": {"type": "area", "tooltip": true},
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "timeUnit": "yearmonth",
+            "title": "Time"
+          },
+          "y": {
+            "field": "Sales",
+            "type": "quantitative",
+            "aggregate": "sum",
+            "title": "Sales",
+            "axis": {"format": "~s", "title": null}
+          },
+          "color": {
+            "field": "Region",
+            "type": "nominal",
+            "legend": null,
+            "scale": {"range": ["beige", "#D891AF", "#692657", "#A6D3F7"]}
+          }
+        }
+      },
+      {
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "timeUnit": "yearmonth",
+            "title": "Time"
+          },
+          "y": {
+            "field": "TotalSales",
+            "aggregate": "sum",
+            "type": "quantitative"
+          }
+        },
+        "transform": [
+          {
+            "aggregate": [{"as": "TotalSales", "field": "Sales", "op": "sum"}],
+            "groupby": ["Year", "Region"]
+          },
+          {
+            "sort": [{"field": "TotalSales", "order": "descending"}],
+            "window": [{"as": "Ranking", "op": "rank"}],
+            "groupby": ["Year", "Region"]
+          },
+          {"filter": "datum.Ranking==1"}
+        ],
+        "layer": [
+          {
+            "mark": {"type": "circle"},
+            "encoding": {"color": {"field": "Region"}}
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "center",
+              "dx": -5,
+              "dy": -4,
+              "font": "Tahoma",
+              "baseline": "middle",
+              "fontStyle": "italic",
+              "fontSize": 10,
+              "color": "aliceblue"
+            },
+            "encoding": {
+              "text": {
+                "field": "TotalSales",
+                "aggregate": "sum",
+                "format": "~s"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelColor": "aliceblue",
+      "grid": false,
+      "titleColor": "aliceblue",
+      "labelFont": "Tahoma"
+    },
+    "title": {"color": "aliceblue"},
+    "legend": {
+      "labelColor": "aliceblue",
+      "titleColor": "aliceblue",
+      "titleFont": "Tahoma"
+    }
+  }
+}

@@ -1,40 +1,169 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 500,
-  "title": "Sales per States",
-  "projection": {"type": "albersUsa"},
-  "layer": [
+  "background": "grey",
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "vconcat": [
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/states_usa.json",
-        "format": {"type": "topojson", "feature": "states"}
-      },
-      "transform": [
+      "width": 800,
+      "height": 400,
+      "projection": {"type": "albersUsa"},
+      "layer": [
         {
-          "lookup": "properties.name",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/sales.csv"
+          "data": {
+            "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/states_usa.json",
+            "format": {"type": "topojson", "feature": "states"}
+          },
+          "transform": [
+            {
+              "lookup": "properties.name",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/sales.csv"
+                },
+                "key": "State",
+                "fields": ["TotalSales", "Year"]
+              }
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "white"},
+          "encoding": {
+            "color": {
+              "field": "TotalSales",
+              "type": "quantitative",
+              "title": "Total Sales",
+              "scale": {"type": "log"}
             },
-            "key": "State",
-            "fields": ["TotalSales"]
+            "tooltip": [
+              {"field": "properties.name", "type": "nominal", "title": "State"},
+              {
+                "field": "TotalSales",
+                "type": "quantitative",
+                "format": "~s",
+                "title": "Total Sales"
+              }
+            ]
           }
+        },
+        {
+          "transform": [
+            {"filter": {"param": "time_brush"}},
+            {"timeUnit": "year", "as": "Year", "field": "Order_Date"}
+          ],
+          "encoding": {
+            "longitude": {"field": "Longitude", "type": "quantitative"},
+            "latitude": {"field": "Latitude", "type": "quantitative"}
+          },
+          "layer": [
+            {
+              "mark": {"type": "circle", "color": "whitesmoke", "opacity": 0.4},
+              "encoding": {
+                "size": {
+                  "field": "Quantity",
+                  "aggregate": "count",
+                  "scale": {"domain": [0, 50, 150, 350, 600]},
+                  "title": "No. Products"
+                },
+                "tooltip": [
+                  {"field": "State"},
+                  {
+                    "field": "Year",
+                    "timeUnit": "year",
+                    "title": "Year",
+                    "type": "ordinal"
+                  },
+                  {
+                    "field": "Product_ID",
+                    "aggregate": "count",
+                    "title": "Total Product Sold"
+                  }
+                ]
+              }
+            },
+            {
+              "transform": [
+                {
+                  "aggregate": [
+                    {
+                      "field": "Product_ID",
+                      "op": "count",
+                      "as": "NumberProduct"
+                    }
+                  ],
+                  "groupby": ["Year", "Latitude", "Longitude"]
+                },
+                {
+                  "window": [{"op": "rank", "as": "ranking"}],
+                  "sort": [{"field": "NumberProduct", "order": "descending"}]
+                },
+                {"filter": "datum.ranking == 1"},
+                {
+                  "calculate": "'The highest Record of; the selected period: ' + datum['NumberProduct']",
+                  "as": "text_annotation_raw"
+                },
+                {
+                  "calculate": "split(datum.text_annotation_raw,';')",
+                  "as": "text_annotation"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "right",
+                "dx": -8,
+                "dy": -8,
+                "font": "Tahoma",
+                "baseline": "middle",
+                "fontStyle": "italic",
+                "fontSize": 20,
+                "color": "white"
+              },
+              "encoding": {"text": {"field": "text_annotation"}}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 800,
+      "height": 100,
+      "mark": {"type": "line", "point": true, "color": "midnightblue"},
+      "title": "Filter",
+      "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
-        "color": {
-          "field": "TotalSales",
-          "type": "quantitative",
-          "scale": {"type": "log"}
+        "x": {
+          "field": "Order_Date",
+          "timeUnit": "year",
+          "type": "ordinal",
+          "axis": {"title": null, "labelColor": "aliceblue"}
         },
-        "tooltip": [
-          {"field": "properties.name", "type": "nominal", "title": "Country"},
-          {"field": "TotalSales", "type": "quantitative"}
-        ]
+        "y": {
+          "field": "Product_ID",
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "No. Products"
+        }
       }
     }
   ],
-  "config": {}
+  "config": {
+    "axisY": {
+      "labelColor": "aliceblue",
+      "grid": false,
+      "titleColor": "aliceblue",
+      "labelFont": "Tahoma",
+      "format": "~s"
+    },
+    "title": {"color": "aliceblue"},
+    "legend": {
+      "labelColor": "aliceblue",
+      "titleColor": "aliceblue",
+      "titleFont": "Tahoma"
+    }
+  }
 }

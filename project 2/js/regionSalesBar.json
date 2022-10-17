@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "grey",
+  "width": 500,
+  "height": 200,
+  "data": {
+    "url": "https://raw.githubusercontent.com/NzBernadine/FIT3179/main/project%202/superstore.csv"
+  },
+  "transform": [{"calculate": "datetime(datum.Order_Date)", "as": "Year"}],
+  "encoding": {
+    "x": {
+      "field": "Sales",
+      "aggregate": "sum",
+      "title": "Total Sales",
+      "type": "quantitative",
+      "axis": {"format": "~s"}
+    },
+    "y": {"field": "Region", "type": "nominal"}
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "legend": null,
+          "scale": {"range": ["beige", "#D891AF", "#692657", "#A6D3F7"]}
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -4,
+        "dy": -4,
+        "font": "Tahoma",
+        "fontStyle": "bold",
+        "fontSize": 12,
+        "color": "gray"
+      },
+      "encoding": {
+        "text": {"field": "Sales", "aggregate": "sum", "format": "~s"}
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelColor": "aliceblue",
+      "grid": false,
+      "titleColor": "aliceblue",
+      "labelFont": "Tahoma"
+    },
+    "title": {"color": "aliceblue"},
+    "legend": {
+      "labelColor": "aliceblue",
+      "titleColor": "aliceblue",
+      "titleFont": "Tahoma"
+    }
+  }
+}
